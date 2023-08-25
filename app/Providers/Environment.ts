@@ -33,4 +33,8 @@ export module Environment {
     export function storagePath(address: string = "") {
         return path.join(PWD, "storage", address);
     }
+
+    export const TELEGRAM={
+        TOKEN:process.env.BOT_TOKEN
+    }
 }

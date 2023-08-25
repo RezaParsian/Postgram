@@ -45,17 +45,17 @@ export class IranPost {
             return postInfo;
 
         postInfo = {
-            content: $('div:contains(محتویات مرسوله)').eq(-2).text().split(': ')[1].trim(),
-            accepted_at: $('div:contains(تاریخ و ساعت قبول)').eq(-1).text().split(': ')[1].trim(),
+            content: $('div:contains(محتویات مرسوله)').eq(-2).text().split(': ')[1]?.trim(),
+            accepted_at: $('div:contains(تاریخ و ساعت قبول)').eq(-1).text().split(': ')[1]?.trim(),
             price: {
-                p1: $('div:contains("کرايه پستي :")').eq(-2).text().split(":")[1].trim(),
-                p2: $('div:contains("کرايه پستي پس از تخفيف :")').eq(-2).text().split(":")[1].trim(),
-                p3: $('div:contains("تعهد غرامت اجباري :")').eq(-2).text().split(":")[1].trim(),
-                p4: $('div:contains("آگهي تحويل الکترونيک :")').eq(-2).text().split(":")[1].trim(),
-                p5: $('div:contains("سرويس پيام کوتاه :")').eq(-2).text().split(":")[1].trim(),
-                p6: $('div:contains("ماليات بر ارزش افزوده :")').eq(-2).text().split(":")[1].trim(),
-                p7: $('div:contains("حق السهم پست :")').eq(-2).text().split(":")[1].trim(),
-                p8: $('div:contains("هزينه پستي (با ماليات) :")').eq(-2).text().split(":")[1].trim(),
+                p1: $('div:contains("کرايه پستي :")').eq(-2).text().split(":")[1]?.trim(),
+                p2: $('div:contains("کرايه پستي پس از تخفيف :")').eq(-2).text().split(":")[1]?.trim(),
+                p3: $('div:contains("تعهد غرامت اجباري :")').eq(-2).text().split(":")[1]?.trim(),
+                p4: $('div:contains("آگهي تحويل الکترونيک :")').eq(-2).text().split(":")[1]?.trim(),
+                p5: $('div:contains("سرويس پيام کوتاه :")').eq(-2).text().split(":")[1]?.trim(),
+                p6: $('div:contains("ماليات بر ارزش افزوده :")').eq(-2).text().split(":")[1]?.trim(),
+                p7: $('div:contains("حق السهم پست :")').eq(-2).text().split(":")[1]?.trim(),
+                p8: $('div:contains("هزينه پستي (با ماليات) :")').eq(-2).text().split(":")[1]?.trim(),
             }
         }
 
