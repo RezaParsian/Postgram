@@ -1,0 +1,7 @@
+.idea
+.db
+.env
+dist
+node_modules
+sotrage
+last.line

@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_USER: "${DATABASE_USER}"
+      POSTGRES_DB: "${DATABASE_DB}"
+      POSTGRES_PASSWORD: "${DATABASE_PASSWORD}"
+      TZ: "${TZ}"
+      PGTZ: "${TZ}"
+    volumes:
+      - ./.db:/var/lib/postgresql/data
+      - ./storage:/var/sql
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - db
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: "postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@db/${DATABASE_DB}"
+      POSTGRES_USER: "${DATABASE_USER}"
+      POSTGRES_PASSWORD: "${DATABASE_PASSWORD}"
+      POSTGRES_DB: "${DATABASE_DB}"
+      TZ: "${TZ}"
+      PGTZ: "${TZ}"
+    ports:
+      - "${EXPRESS_PORT}:${EXPRESS_PORT}"
+    volumes:
+      - .:/home/node/app
+    working_dir: /home/node/app
