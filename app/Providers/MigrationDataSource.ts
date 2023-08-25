@@ -2,6 +2,7 @@ import {Environment} from './Environment';
 import "reflect-metadata";
 import {DataSource} from "typeorm";
 
+
 export const migrationDataSource = new DataSource({
     type: "postgres",
     host: Environment.DATABASE_HOST,
