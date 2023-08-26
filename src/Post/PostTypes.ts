@@ -1,6 +1,7 @@
-export type Consignment={
-    post_info:PostInfo,
-    post_logs:PostLog[]
+export type Consignment = {
+    post_info: PostInfo,
+    post_logs: PostLog[],
+    postman?: string
 }
 
 export type PostInfo = {

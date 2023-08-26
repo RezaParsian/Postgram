@@ -5,12 +5,16 @@ import {Post} from "../../Models/Post";
 import {PostLog, PostLog as PostLogModel} from "../..//Models/PostLog";
 import {IranPost} from "../../../src/Post/IranPost";
 import {Consignment} from "../../../src/Post/PostTypes";
+import * as pub from 'pug';
+import {Environment} from "../../Providers/Environment";
 import {Repository} from "typeorm";
 import {AppDataSource} from "../../Providers/DataSource";
 
 const bot = new Telegram();
 
 export module BotController {
+
+    import resourcePath = Environment.resourcePath;
 
     export async function index(req: Request, res: Response) {
         let pm: Message = req.body;
@@ -24,14 +28,14 @@ export module BotController {
                 break;
 
             default:
-                post(pm.message.text).then(res=>{
-                    console.log(res);
-                    bot.sendMessage(pm.message.chat.id,res);
+                post(pm.message.text).then(response => {
+                    res.send(response);
+                    // bot.sendMessage(pm.message.chat.id,response);
                 })
                 break;
         }
 
-        res.send({});
+        // res.send({});
     }
 
     export async function post(code: string) {
@@ -41,8 +45,13 @@ export module BotController {
 
         let consignment: Consignment = await iranPost.collect(code);
 
-        if (!consignment.post_info)
-            return 'کد مرسوله‌ای که ارسال کردی خرابه.';
+        if (!consignment?.post_info?.from)
+            return '💀 کد مرسوله‌ای که ارسال کردی خرابه.';
+
+        if (consignment.post_logs.find(item => item.description?.includes('مرسوله جهت توزیع تحویل نامه رسان شده است')))
+            return pub.renderFile(resourcePath('View/finished.pug'), {
+                postman: consignment.postman
+            });
 
         postRepository.findOne({
             where: {
@@ -75,6 +84,6 @@ export module BotController {
             })
         });
 
-        return 'salam';
+        return pub.renderFile(resourcePath('View/post.pug'), consignment.post_info);
     }
 }

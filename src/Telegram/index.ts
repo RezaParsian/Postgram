@@ -9,7 +9,7 @@ export class Telegram {
         return await axios.post(this.url + '/sendMessage', {
             chat_id: chatId,
             text,
-            parse_mode:'Markdown'
+            parse_mode: 'Markdown'
         }).catch(reason => {
             Log().error(reason);
         })
