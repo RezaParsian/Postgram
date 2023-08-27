@@ -5,10 +5,10 @@
   "main": "main.ts",
   "scripts": {
     "watch": "nodemon",
-    "typeorm": "typeorm-ts-node-esm",
-    "migration": "typeorm-ts-node-esm migration:generate -d app/Providers/MigrationDataSource.ts",
-    "migrate": "typeorm-ts-node-esm migration:run -d app/Providers/MigrationDataSource.ts",
-    "drop": "typeorm-ts-node-esm schema:drop -d app/Providers/MigrationDataSource.ts",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "migration": "typeorm-ts-node-commonjs migration:generate -d app/Providers/MigrationDataSource.ts",
+    "migrate": "typeorm-ts-node-commonjs migration:run -d app/Providers/MigrationDataSource.ts",
+    "drop": "typeorm-ts-node-commonjs schema:drop -d app/Providers/MigrationDataSource.ts",
     "test": "jest",
     "trace": "node --loader ts-node/esm --trace-warnings",
     "seed": "ts-node database/seeders/DatabaseSeeder.ts"
@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/RezaParsian/Node.Ts#readme",
   "dependencies": {
+    "axios": "^1.4.0",
+    "cheerio": "^1.0.0-rc.12",
     "connect-flash": "^0.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -36,6 +38,7 @@
     "typeorm": "^0.3.12"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/connect-flash": "^0.0.37",
     "@types/cors": "^2.8.13",
     "@types/es6-shim": "^0.31.42",
@@ -47,6 +50,7 @@
     "@types/node": "^18.14.6",
     "@types/node-cron": "^3.0.7",
     "@types/pg": "^8.6.6",
+    "@types/pug": "^2.0.6",
     "jest": "^29.5.0",
     "nodemon": "^2.0.21",
     "ts-jest": "^29.0.5",
