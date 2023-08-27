@@ -10,7 +10,8 @@ export class User {
     posts?:Post[];
 
     @Column({
-        type:'numeric'
+        type:'numeric',
+        unique:true
     })
     from?:number;
 
