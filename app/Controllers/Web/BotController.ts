@@ -24,20 +24,18 @@ export module BotController {
         switch (pm.message.text) {
             case '/start':
                 user(pm).then(response => {
-                    // bot.sendMessage(pm.message.chat.id, response);
-                    res.send(response);
+                    bot.sendMessage(pm.message.chat.id, response);
                 });
                 break;
 
             default:
                 post(pm).then(response => {
-                    res.send(response);
-                    // bot.sendMessage(pm.message.chat.id,response);
+                    bot.sendMessage(pm.message.chat.id,response);
                 })
                 break;
         }
 
-        // res.send({});
+        res.send({});
     }
 
     export async function user(pm: Message): Promise<string> {
