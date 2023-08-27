@@ -15,7 +15,7 @@ function everyHour(task: () => void): cron.ScheduledTask {
 }
 
 export async function schedule() {
-    everyMinute(checkPostStatusCommand);
+    everyHour(checkPostStatusCommand);
 
     ColorConsole.info('Schedule Are Planned!');
 }

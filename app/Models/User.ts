@@ -23,21 +23,24 @@ export class User {
     @Column({
         type:'varchar',
         length:128,
-        name:'first_name'
+        name:'first_name',
+        nullable:true,
     })
     firstName?:string;
 
     @Column({
         type:'varchar',
         length:128,
-        name:'last_name'
+        name:'last_name',
+        nullable:true,
     })
     lastName?:string;
 
     @Column({
         type:'varchar',
         length:128,
-        name:'username'
+        name:'username',
+        nullable:true,
     })
     userName?:string;
 
