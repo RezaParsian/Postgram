@@ -117,6 +117,9 @@ export module BotController {
             })
         });
 
-        return pub.renderFile(resourcePath('View/post.pug'), consignment.post_info);
+        return pub.renderFile(resourcePath('View/post.pug'), {
+            ...consignment.post_info,
+            log: consignment.post_logs[consignment.post_logs.length - 1]
+        });
     }
 }
