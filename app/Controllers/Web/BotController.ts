@@ -21,7 +21,10 @@ export module BotController {
     export async function index(req: Request, res: Response) {
         let pm: Message = req.body;
 
-        switch (pm?.message?.text) {
+        if (!pm?.message?.text)
+            return;
+
+        switch (pm.message.text) {
             case '/start':
                 user(pm).then(response => {
                     bot.sendMessage(pm.message.chat.id, response);
@@ -30,7 +33,7 @@ export module BotController {
 
             default:
                 post(pm).then(response => {
-                    bot.sendMessage(pm.message.chat.id,response);
+                    bot.sendMessage(pm.message.chat.id, response);
                 })
                 break;
         }
