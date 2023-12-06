@@ -1,6 +1,7 @@
 import {AppDataSource} from './app/Providers/DataSource';
 import * as server from './app/Providers/Server';
 import {schedule} from "./app/Console/Kernel";
+import {checkPostStatusCommand} from "./app/Console/Command/CheckPostStatusCommand";
 
 async function bootstrap() {
     // Initialize Database in boostrap.
@@ -14,5 +15,5 @@ async function bootstrap() {
 }
 
 bootstrap().then(async () => {
-
+    await checkPostStatusCommand();
 });

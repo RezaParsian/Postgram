@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio';
 import {Consignment, PostInfo, PostLog} from "./PostTypes";
 
 export class IranPost {
-    protected api: string = 'http://195.110.38.200:30607/?code=';
+    protected api: string = 'READ FROM ENV';
 
     public async collect(search: string): Promise<Consignment> {
         let data: string = await this.search(search);
